@@ -157,7 +157,7 @@ async def start_uploading(data):
         )
         subtitles="English, English, SRT │ English, SRT │ English [SDH], SRT │ Japanese [Forced], SRT │ Japanese [SDH], SRT │ Arabic, SRT │ Czech, SRT │ Danish, SRT │ German, SRT │ Greek, SRT │ Spanish (Latin American), SRT │ Spanish (European), SRT │ Finnish, SRT │ Filipino, SRT │ French, SRT │ Hebrew, SRT │ Croatian, SRT │ Hungarian, SRT │ Indonesian, SRT │ Italian, SRT │ Korean, SRT │ Malay, SRT │ Norwegian Bokmål, SRT │ Dutch, SRT │ Polish, SRT │ Portuguese (Brazilian), SRT │ Portuguese (European), SRT │ Romanian, SRT │ Russian, SRT │ Swedish, SRT │ Thai, SRT │ Turkish, SRT │ Ukrainian, SRT │ Vietnamese, SRT │ Chinese (Simplified), SRT │ Chinese (Traditional)"
         subtitles = subtitles.replace(" SRT │","")
-        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese + English`" + "\n" + f"**‣ Subtitle**: `{subtitles}`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Google Drive]({source_link}) [🔗Worker]({worker_link})"
+        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese + English`" + "\n" + f"**‣ Subtitle**: `{subtitles}`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: `{durationx}`" + "\n" + f"**‣ Downloads**: [🔗Google Drive]({source_link}) [🔗Worker]({worker_link})"
         rep_id = int(main.id)  
         await asyncio.sleep(5)
         untextx = await app.send_message(
