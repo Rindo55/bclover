@@ -34,7 +34,7 @@ from main import app, status
 from pyrogram.errors import FloodWait
 
 from main.inline import button1
-async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaasize):
+async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaasize,subtitles):
 
     try:
 
@@ -60,9 +60,8 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaas
             filed = filed.replace("[1080p Web-DL]", "[720p x265] @animxt")
             fukpath = "downloads/" + filed
             caption = f"{filed}"
-            caption = caption.replace("[720p x265] @animxt.mkv", "") 
-            caption = caption.replace("[720p x265] @animxt", "") 
-            gcaption=f"**{caption}**" + "\n" +  f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `720p x265 10Bit`" + "\n" + f"✓  `English ~ Sub`" + "\n" + "#Encoded #HEVC"
+            caption = "Black Clover: Sword of the Wizard King 2023"
+            gcaption=f"**{caption}**" + "\n" +  f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `720p x265 10Bit`" + "\n" + f"✓  `{subtitles} ~ Subs`" + "\n" + "#Encoded #HEVC"
             kayo_id = -1001642923224
             gay_id = 1159872623
             x = await app.send_document(
@@ -80,17 +79,7 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaas
             thumb=thumbnail
             )
             os.rename(file,fukpath)
-            server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
-            uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(fukpath, 'rb')}).json()
-            directlink = uploadxz["data"]["downloadPage"]    
-            gotn_url = f"https://tnshort.net/api?api=fea911843f6e7bec739708f3e562b56184342089&url={directlink}&format=text"
-            gofinal = requests.get(gotn_url)
-            go_text = gofinal.text
-            gourl = go_text
             da_url = "https://da.gd/"
-            gofile_url = f"{da_url}shorten"
-            goresponse = requests.get(gofile_url, params={"url": gourl})
-            gofuk_text = goresponse.text.strip()
             file_er_id = str(x.id)
             share_link = f"https://telegram.me/somayukibot?start=animxt_{str_to_b64(file_er_id)}"
             enshare_link = f"https://tnlinks.in/api?api=1458ad61946fd6f5b8a93161c9cfd94733813566&url={share_link}&format=text"
@@ -100,21 +89,9 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaas
             xshare_url = f"{da_url}shorten"
             tgshare = requests.get(xshare_url, params={"url": cshare})
             teleshare = tgshare.text.strip()            
-            repl_markup=InlineKeyboardMarkup(
-                [
-                    [
-                         InlineKeyboardButton(
-                            text="🐌TG FILE",
-                            url=teleshare,
-                        ),
-                         InlineKeyboardButton(
-                              text="🚀GoFile",
-                              url=gofuk_text,
-                        ),
-                    ],
-                ],
-            )
-            encodetext =  f"{sourcetext}" "\n" + f"**‣ File Size**: `{size}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({teleshare}) [🔗Gofile]({gofuk_text})"
+            repl_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
+                                                                  "🐌TG FILE", url=teleshare)]])
+            encodetext =  f"{sourcetext}" "\n" + f"**‣ File Size**: `{size}`" + "\n" + f"**‣ Duration**: `{durationx}`" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({teleshare})"
             await asyncio.sleep(5)
             entext = await untext.edit(encodetext, reply_markup=repl_markup)
     except Exception:
