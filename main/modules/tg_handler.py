@@ -195,7 +195,7 @@ async def start_uploading(data):
 
         print("Uploading --> ",name)
 
-        video = await upload_video(msg,fpath,id,tit,name,size,sourcetext,untext,nyaasize) 
+        video = await upload_video(msg,fpath,id,tit,name,size,sourcetext,untext,nyaasize,subtitles) 
         try:
 
             os.remove("video.mkv")
