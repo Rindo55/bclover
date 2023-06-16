@@ -10,7 +10,7 @@ from main.inline import button1
 
 def trim_title(title: str):
     title = title.replace("Demon Slayer S04E04 1080p WEB H.264 E-AC-3 -Yandere-Raws (AMZN) (Kimetsu no Yaiba: Katanakaji no Sato-hen)", "Demon Slayer Kimetsu No Yaiba To the Swordsmith Village - 04")
-    title = title.replace("Black Clover Sword of the Wizard King 2023 1080p NF WEB-DL DDP5.1 H 264-VARYG (Black Clover: Mahou Tei no Ken, Dual-audio, Multi-Subs)", "Black Clover Sword of the Wizard King")
+    title = title.replace("Black Clover Sword of the Wizard King 2023 1080p NF WEB-DL DDP5.1 H 264-VARYG (Black Clover: Mahou Tei no Ken, Dual-audio, Multi-Subs)", "Black Clover Sword of the Wizard King - Movie")
     ext = ".mkv"
     title = title + ext
     return title
