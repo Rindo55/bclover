@@ -126,9 +126,9 @@ async def start_uploading(data):
         duration = get_duration(file)
         durationx = get_durationx(file)
         filed = os.path.basename(file)
-        filed = filed.replace("Demon Slayer S04E10 1080p WEB x264 E-AC-3 -Tsundere-Raws", "Demon Slayer S4 - 10 [1080p Web-DL]")
-        razo = filed.replace("[1080p Web-DL].mkv", "[720p x265] @animxt.mkv")
-        razo = filed.replace("[1080p Web-DL].mkv", "[720p x265] @animxt.mkv")
+        filed = filed.replace("Black.Clover.Sword.of.the.Wizard.King.2023.1080p.NF.WEB-DL.DDP5.1.H.264-VARYG", "Black Clover Sword of the Wizard King ~ Movie [720p x265] @animxt")
+        razo = filed
+        razo = filed
         fpath = "downloads/" + filed
         ghostname = name
         ghostname = ghostname.replace("[1080p Web-DL].mkv", "")
@@ -138,27 +138,26 @@ async def start_uploading(data):
 
         thumbnail = await generate_thumbnail(id,file)
 
-        videox = await app.send_document(
-
-                DATABASE_ID,
-
-            document=file,
-
-            caption=guessname,
-
-            file_name=filed,
-
-            force_document=True,
-
-            thumb=thumbnail
-
-            )   
         os.rename(file, fpath)
-        sourcefileid = str(videox.id)
-        source_link = f"https://telegram.me/somayukibot?start=animxt_{str_to_b64(sourcefileid)}"
-        repl_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
-                                                              "🐌TG FILE", url=source_link)]])       
-        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_link})"
+        source_link="https://da.gd/bcmnf"
+        worker_link="https://da.gd/BCMHD"
+        repl_markup=InlineKeyboardMarkup(
+            [
+                [
+                     InlineKeyboardButton(
+                        text="🚀GDrive",
+                        url=source_link,
+                    ),
+                     InlineKeyboardButton(
+                          text="🚀Worker",
+                          url=worker_link,
+                    ),
+                ],
+            ],
+        )
+        subtitles="English, English, SRT │ English, SRT │ English [SDH], SRT │ Japanese [Forced], SRT │ Japanese [SDH], SRT │ Arabic, SRT │ Czech, SRT │ Danish, SRT │ German, SRT │ Greek, SRT │ Spanish (Latin American), SRT │ Spanish (European), SRT │ Finnish, SRT │ Filipino, SRT │ French, SRT │ Hebrew, SRT │ Croatian, SRT │ Hungarian, SRT │ Indonesian, SRT │ Italian, SRT │ Korean, SRT │ Malay, SRT │ Norwegian Bokmål, SRT │ Dutch, SRT │ Polish, SRT │ Portuguese (Brazilian), SRT │ Portuguese (European), SRT │ Romanian, SRT │ Russian, SRT │ Swedish, SRT │ Thai, SRT │ Turkish, SRT │ Ukrainian, SRT │ Vietnamese, SRT │ Chinese (Simplified), SRT │ Chinese (Traditional)"
+        subtitles = subtitles.replace(" SRT │","")
+        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese + English`" + "\n" + f"**‣ Subtitle**: `{subtitles}`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Google Drive]({source_link}) [🔗Worker]({worker_link})"
         rep_id = int(main.id)  
         await asyncio.sleep(5)
         untextx = await app.send_message(
