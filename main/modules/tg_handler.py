@@ -134,9 +134,6 @@ async def start_uploading(data):
         ghostname = ghostname.replace("[1080p Web-DL].mkv", "")
         ghostname = ghostname.replace(".mkv", "")
         main = await app.send_photo(KAYO_ID,photo=img,caption=caption)
-        guessname = f"**{ghostname}**" + "\n" + f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + f"✓  `English ~ Sub`" + "\n" + "#Source #WebDL"
-
-        thumbnail = await generate_thumbnail(id,file)
 
         os.rename(file, fpath)
         source_link="https://da.gd/bcmnf"
@@ -168,7 +165,7 @@ async def start_uploading(data):
         await asyncio.sleep(3)
         unitext = await untextx.edit(orgtext, reply_markup=repl_markup)
         await asyncio.sleep(5)
-        sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `{razo}`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English`"
+        sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `{razo}`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese + English`" + "\n" + f"**‣ Subtitle**: `{subtitles}`"
         untext = await app.send_message(
                       chat_id=KAYO_ID,
                       text=sourcetext,
